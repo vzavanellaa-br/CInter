@@ -11,7 +11,18 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
 .env.local
+.env.*.local
+
+# Documentacao com credenciais — NUNCA versionar
+Supabase Info.md
+*credenciais*
+*secrets*
+
+# Configuração local do Claude Code (permissões específicas desta máquina).
+# .claude/settings.json (sem .local), se existir, pode e deve ser versionado.
+.claude/settings.local.json
 
 # Editor directories and files
 .vscode/*
