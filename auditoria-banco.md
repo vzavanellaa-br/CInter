@@ -79,7 +79,44 @@ não há Fase 2.
 
 ---
 
-## Recomendação
+---
+
+# Reauditoria — 16/08/2026 (após o Prompt 2)
+
+Verificação independente feita pelo Cowork via MCP, sem depender do relatório do code.
+
+## Confirmado ✅
+
+- Tabelas antigas apagadas. Novas: `familias`, `responsaveis`, `criancas`
+- **RLS ligada nas três** (`relrowsecurity = true`). O alerta crítico anterior sumiu
+- 7 políticas, **todas** derivando de `familia_do_usuario()`. Nenhuma aceita
+  `familia_id` vindo do cliente
+- `UPDATE` em `criancas` e `familias` tem `WITH CHECK` além do `USING` — impede
+  mover uma criança para outra família. Detalhe fino, feito certo
+- `criancas` sem vínculo com `auth.users` e sem campo de contato. Só `ano_nascimento`
+- Sem política de INSERT em `familias` e `responsaveis`: só entram pela RPC
+  `criar_familia`. O cliente não insere direto — correto
+- Ambas as funções com `search_path` fixo, o que fecha a porta para sequestro de
+  search_path
+- 3 migrations versionadas
+
+## Avisos restantes
+
+| # | Aviso | Veredito |
+|---|---|---|
+| 1 | `criar_familia` executável por `authenticated` | **Por design.** Não "corrigir" — revogar quebra o cadastro |
+| 2 | `familia_do_usuario()` exposta como endpoint REST | **Ruído, não buraco.** Só devolve o próprio `familia_id` de quem chama. Correção limpa: mover para um schema privado, fora da API. Baixa prioridade |
+| 3 | **Proteção de senha vazada desligada** | **Real, vale ligar.** Um clique no painel: Authentication → Policies. Confere a senha do responsável contra bases de vazamento |
+
+## Lacuna anotada para a Fase 4
+
+Não há política de `DELETE` em `familias`. Hoje o responsável não consegue apagar
+a própria conta e os dados da família. A LGPD dá esse direito. Não é urgente
+enquanto não houver cadastro público, mas entra na Fase 4.
+
+---
+
+## Recomendação (registro original, já executada)
 
 Refazer o modelo do zero, em migrations versionadas. Os dados atuais são de teste
 e não justificam migração cuidadosa.

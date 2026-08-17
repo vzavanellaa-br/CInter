@@ -26,12 +26,19 @@ Rotina sozinha não é produto; é a isca gratuita.
 **Fase 0 reconstruída.** Os documentos originais (mai/2026) se perderam e foram
 refeitos em 15/08/2026.
 
-**Banco:** o projeto Supabase **já existe** e já tem 4 tabelas de uma tentativa
-anterior (`familias`, `usuarios`, `carteiras`, `transacoes`), só com dados de teste.
-⚠️ **RLS está desligada nas quatro** e o modelo diverge da spec — ver
-`auditoria-banco.md`. Precisa ser refeito antes de crescer.
+**Fase 1 — Passos 1 a 3 concluídos e auditados (16/08/2026).**
 
-**Sem código de front ainda.** Repositório não existe.
+- Repositório `cinter` no GitHub (privado), Vite + React + Tailwind v4 rodando local
+- Banco refeito do zero: `familias`, `responsaveis`, `criancas` — RLS ligada nas três,
+  7 políticas todas derivadas de `auth.uid()`, verificado de forma independente
+  pelo Cowork via MCP. Ver `auditoria-banco.md`
+- Funções `familia_do_usuario()` e `criar_familia()`, ambas com `search_path` fixo
+- 3 migrations versionadas
+
+**Falta no Passo 4:** telas de login, cadastro de família e cadastro de criança.
+
+⚠️ **Nunca versionar `Supabase Info.md`** — contém chaves e string de conexão.
+Já está no `.gitignore`; o ideal é movê-lo para fora da pasta do repositório.
 
 ## Fluxo de trabalho
 
