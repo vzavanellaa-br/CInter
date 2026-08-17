@@ -35,7 +35,17 @@ refeitos em 15/08/2026.
 - Funções `familia_do_usuario()` e `criar_familia()`, ambas com `search_path` fixo
 - 3 migrations versionadas
 
-**Falta no Passo 4:** telas de login, cadastro de família e cadastro de criança.
+**Passo 4 concluído e auditado (16/08/2026): Fase 1 FECHADA.**
+Login, cadastro de conta, criação de família via RPC, cadastro de criança em modal,
+rotas protegidas, sessão centralizada em `AuthProvider`. Testado com Playwright
+contra o Supabase real, inclusive em viewport de celular. Nenhum `localStorage`,
+nenhum segredo no repositório.
+
+⚠️ **Pendência de infra:** o e-mail embutido do Supabase é limitado a 2 mensagens
+por hora e não serve para produção. Precisa de SMTP próprio antes de ter usuários.
+Durante o desenvolvimento, desligar a confirmação de e-mail resolve.
+
+**Próximo:** Fase 2 — economia do Cruzeiro (tarefas, aprovação, carteira, loja).
 
 ⚠️ **Nunca versionar `Supabase Info.md`** — contém chaves e string de conexão.
 Já está no `.gitignore`; o ideal é movê-lo para fora da pasta do repositório.

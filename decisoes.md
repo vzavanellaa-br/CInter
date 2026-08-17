@@ -37,6 +37,20 @@ Uma linha por decisão, com data e motivo. Serve para não refazer discussão j�
 | 22 | Modelo de dados atual será **refeito do zero** | Auditoria achou RLS desligada, criança com conta no auth, saldo editável e transação sem rastro. Só há dados de teste — não compensa migrar. Ver `auditoria-banco.md` |
 | 23 | `responsaveis` e `criancas` viram tabelas separadas | Modelo antigo juntava tudo em `usuarios` com FK para `auth.users`, o que obrigaria a criança a ter conta própria — contraria a decisão 10 |
 
+## 16/08/2026 — Fase 1 concluída e desenho da Fase 2
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 24 | Sessão centralizada em `AuthProvider` (contexto único) | Cada tela com sua própria escuta criava corrida: a tela concluía "não tem família" antes da sessão carregar, gerando vaivém infinito entre `/inicio` e `/primeiro-acesso` |
+| 25 | Recorrência de tarefa: **diária, semanal e avulsa** | Escolha do PO. Semanal exige dias da semana; avulsa exige data |
+| 26 | **Bônus de consistência entra na Fase 2** | É o mecanismo que protege contra o efeito de superjustificação. Adiar viraria nunca |
+| 27 | Preço definido pelo pai, com faixa sugerida pelo app | Mantém o controle com ele sem deixar a economia desandar |
+| 28 | Fase 2 dividida em 2A (ciclo do dinheiro) e 2B (loja e bônus) | 2A é a parte mais crítica do produto; merece atenção e teste isolados |
+| 29 | Uma tarefa pertence a UMA criança | Simplicidade. Agrupar por vários filhos só se doer no uso real |
+| 30 | `valor_creditado` e `custo_pago` guardam fotografia do valor | Mudar o preço hoje não pode reescrever o histórico financeiro |
+| 31 | Tarefa nunca é apagada, só desativada | Apagar destruiria o histórico de execuções |
+| 32 | E-mail: desligar confirmação no desenvolvimento; SMTP próprio na Fase 4 | O e-mail embutido do Supabase é limitado a 2/hora e não serve para produção |
+
 ### Pendências abertas
 
 - [ ] Nome comercial definitivo
