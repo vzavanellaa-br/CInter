@@ -6,6 +6,7 @@ import { useTarefas } from '../../hooks/useTarefas'
 import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
 import FormularioTarefa from './FormularioTarefa'
+import { formatarHorario, infoPeriodo } from '../../lib/tempo'
 
 const RECORRENCIA_ROTULO = { diaria: 'Diária', semanal: 'Semanal', avulsa: 'Avulsa' }
 const DIA_ABREV = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
@@ -107,6 +108,10 @@ export default function Tarefas() {
                         </p>
                         <p className="text-xs text-gray-400">
                           {RECORRENCIA_ROTULO[tarefa.recorrencia]} · {resumoRecorrencia(tarefa)}
+                        </p>
+                        <p className="text-xs text-gray-400">
+                          {infoPeriodo(tarefa.periodo).icone} {infoPeriodo(tarefa.periodo).rotulo}
+                          {tarefa.horario && ` · ${formatarHorario(tarefa.horario)}`}
                         </p>
                         {!tarefa.ativa && <p className="mt-1 text-xs font-medium text-gray-400">Desativada</p>}
                       </div>

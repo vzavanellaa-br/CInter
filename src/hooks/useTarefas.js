@@ -15,7 +15,7 @@ export function useTarefas() {
     const { data, error } = await supabase
       .from('tarefas')
       .select(
-        'id, titulo, icone, valor_cruzeiro, recorrencia, dias_semana, data_especifica, ativa, crianca_id, criancas(nome, apelido)',
+        'id, titulo, icone, valor_cruzeiro, recorrencia, dias_semana, data_especifica, periodo, horario, ativa, crianca_id, criancas(nome, apelido)',
       )
       .order('criado_em', { ascending: false })
 

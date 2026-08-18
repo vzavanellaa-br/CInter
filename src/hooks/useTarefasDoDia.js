@@ -41,7 +41,7 @@ export function useTarefasDoDia(criancaId) {
 
     const { data: tarefasData, error: erroTarefas } = await supabase
       .from('tarefas')
-      .select('id, titulo, icone, valor_cruzeiro, recorrencia, dias_semana, data_especifica')
+      .select('id, titulo, icone, valor_cruzeiro, recorrencia, dias_semana, data_especifica, periodo, horario')
       .eq('crianca_id', criancaId)
       .eq('ativa', true)
 

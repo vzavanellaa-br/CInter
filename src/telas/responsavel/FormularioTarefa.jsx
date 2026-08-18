@@ -2,8 +2,16 @@ import { useState } from 'react'
 import Botao from '../../componentes/ui/Botao'
 import CampoTexto from '../../componentes/ui/CampoTexto'
 import Aviso from '../../componentes/ui/Aviso'
+import { horarioForaDoPeriodo, infoPeriodo } from '../../lib/tempo'
 
 const ICONES = ['🦷', '🛏️', '📚', '🧹', '🍽️', '🐶', '👕', '🧸', '🚿', '🥗', '✏️', '⭐']
+
+const OPCOES_PERIODO = [
+  { valor: 'manha', ...infoPeriodo('manha') },
+  { valor: 'tarde', ...infoPeriodo('tarde') },
+  { valor: 'noite', ...infoPeriodo('noite') },
+  { valor: null, ...infoPeriodo(null) },
+]
 
 const DIAS_SEMANA = [
   { valor: 0, rotulo: 'Dom' },
@@ -35,11 +43,20 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
   const [recorrencia, setRecorrencia] = useState(tarefaExistente?.recorrencia ?? 'diaria')
   const [diasSemana, setDiasSemana] = useState(tarefaExistente?.dias_semana ?? [])
   const [dataEspecifica, setDataEspecifica] = useState(tarefaExistente?.data_especifica ?? '')
+  const [periodo, setPeriodo] = useState(tarefaExistente?.periodo ?? null)
+  const [horario, setHorario] = useState(tarefaExistente?.horario?.slice(0, 5) ?? '')
   const [erro, setErro] = useState('')
   const [enviando, setEnviando] = useState(false)
 
   function alternarDiaSemana(dia) {
     setDiasSemana((atual) => (atual.includes(dia) ? atual.filter((d) => d !== dia) : [...atual, dia].sort()))
+  }
+
+  // "A qualquer hora" (periodo null) não tem horário — o CHECK do banco
+  // exige período preenchido quando há horário.
+  function aoEscolherPeriodo(valor) {
+    setPeriodo(valor)
+    if (!valor) setHorario('')
   }
 
   async function aoEnviar(evento) {
@@ -68,6 +85,14 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
       setErro('Escolha a data da tarefa.')
       return
     }
+    // Avisa de forma gentil ANTES de tentar salvar — o banco também recusa
+    // isso (é a mesma regra), mas com uma mensagem técnica.
+    if (horarioForaDoPeriodo(periodo, horario)) {
+      setErro(
+        `Esse horário não é da ${infoPeriodo(periodo).rotulo.toLowerCase()}. Ajuste o horário ou escolha outro período.`,
+      )
+      return
+    }
 
     const payload = {
       titulo: titulo.trim(),
@@ -77,6 +102,8 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
       recorrencia,
       dias_semana: recorrencia === 'semanal' ? diasSemana : null,
       data_especifica: recorrencia === 'avulsa' ? dataEspecifica : null,
+      periodo,
+      horario: horario || null,
     }
 
     setEnviando(true)
@@ -214,6 +241,37 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
               value={dataEspecifica}
               onChange={(evento) => setDataEspecifica(evento.target.value)}
               required
+            />
+          )}
+
+          <div className="flex flex-col gap-1">
+            <span className="text-sm font-medium text-gray-700">Período</span>
+            <div className="grid grid-cols-2 gap-2">
+              {OPCOES_PERIODO.map((opcao) => (
+                <button
+                  key={opcao.rotulo}
+                  type="button"
+                  onClick={() => aoEscolherPeriodo(opcao.valor)}
+                  aria-pressed={periodo === opcao.valor}
+                  className={`min-h-11 rounded-lg border px-2 text-sm font-medium ${
+                    periodo === opcao.valor
+                      ? 'border-purple-600 bg-purple-50 text-purple-700'
+                      : 'border-gray-300 text-gray-600'
+                  }`}
+                >
+                  {opcao.icone} {opcao.rotulo}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {periodo && (
+            <CampoTexto
+              id="horario-tarefa"
+              rotulo="Horário (opcional)"
+              type="time"
+              value={horario}
+              onChange={(evento) => setHorario(evento.target.value)}
             />
           )}
 

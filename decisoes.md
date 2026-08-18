@@ -51,6 +51,16 @@ Uma linha por decisão, com data e motivo. Serve para não refazer discussão j�
 | 31 | Tarefa nunca é apagada, só desativada | Apagar destruiria o histórico de execuções |
 | 32 | E-mail: desligar confirmação no desenvolvimento; SMTP próprio na Fase 4 | O e-mail embutido do Supabase é limitado a 2/hora e não serve para produção |
 
+## 17/08/2026 — Horários nas tarefas
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 33 | Tarefa ganha **período** (manhã/tarde/noite) e **horário opcional** | Período é legível por criança que ainda não lê relógio; o horário exato fica como dica para quem lê |
+| 34 | Período pode ficar vazio = "a qualquer hora" | Nem toda tarefa tem hora ("arrumar o quarto") |
+| 35 | Horário é **orientação, não regra** | Bloquear marcação fora da janela puniria a criança por esquecer de apertar o botão, não por deixar de fazer. Contraria a regra de não existir multa |
+| 36 | Bônus de pontualidade fica em aberto | Se um dia for feito, tem que ser crédito extra por acertar, nunca desconto por atrasar |
+| 37 | CHECK garantindo que o horário cai dentro do período | Impede "noite às 07:00". Barato e evita confusão na tela |
+
 ### Pendências abertas
 
 - [ ] Nome comercial definitivo

@@ -5,6 +5,32 @@ import { useCarteira } from '../../hooks/useCarteira'
 import { useTarefasDoDia } from '../../hooks/useTarefasDoDia'
 import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
+import { ORDEM_PERIODOS, formatarHorario, infoPeriodo, periodoAtual } from '../../lib/tempo'
+
+// Agrupa as tarefas de hoje em blocos Manhã/Tarde/Noite/A qualquer hora, NA
+// ORDEM CRONOLÓGICA (ORDEM_PERIODOS) — nunca por ordenação alfabética do
+// banco nem do JavaScript, que sairia errada. Dentro de cada bloco, ordena
+// por horário; sem horário vai para o fim. Blocos vazios não aparecem.
+function agruparPorPeriodo(tarefas) {
+  const grupos = new Map(ORDEM_PERIODOS.map((periodo) => [periodo, []]))
+
+  for (const tarefa of tarefas) {
+    grupos.get(tarefa.periodo ?? null).push(tarefa)
+  }
+
+  for (const lista of grupos.values()) {
+    lista.sort((a, b) => {
+      if (!a.horario && !b.horario) return 0
+      if (!a.horario) return 1
+      if (!b.horario) return -1
+      return a.horario.localeCompare(b.horario)
+    })
+  }
+
+  return ORDEM_PERIODOS.map((periodo) => ({ periodo, tarefas: grupos.get(periodo) })).filter(
+    (bloco) => bloco.tarefas.length > 0,
+  )
+}
 
 // Tela da criança (6 a 10 anos): sem PIN por enquanto, entra pelo botão
 // "Ver como criança" do Início. Texto curto, fonte grande, nada de vermelho
@@ -42,6 +68,9 @@ export default function MinhasTarefas() {
     )
   }
 
+  const blocos = agruparPorPeriodo(tarefas)
+  const agora = periodoAtual()
+
   return (
     <div className="min-h-screen bg-yellow-50 pb-10">
       <header className="flex items-center justify-between px-4 py-4">
@@ -67,56 +96,87 @@ export default function MinhasTarefas() {
 
         <h2 className="mb-3 text-xl font-bold text-gray-800">Tarefas de hoje</h2>
 
-        {tarefas.length === 0 ? (
+        {blocos.length === 0 ? (
           <p className="rounded-2xl bg-white p-4 text-center text-base text-gray-500 shadow-sm">
             Nenhuma tarefa por hoje. Aproveite para brincar! 🎉
           </p>
         ) : (
-          <ul className="flex flex-col gap-3">
-            {tarefas.map((tarefa) => (
-              <li key={tarefa.id} className="rounded-2xl bg-white p-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl" aria-hidden="true">
-                    {tarefa.icone || '⭐'}
-                  </span>
-                  <div className="flex-1">
-                    <p className="text-lg font-semibold text-gray-900">{tarefa.titulo}</p>
-                    <p className="text-sm text-gray-500">{tarefa.valor_cruzeiro} Cruzeiros</p>
-                  </div>
-                </div>
+          blocos.map((bloco) => {
+            const info = infoPeriodo(bloco.periodo)
+            // Só manhã/tarde/noite podem ser "o período de agora" — "a
+            // qualquer hora" não é um horário do relógio, não destaca.
+            const destacado = bloco.periodo !== null && bloco.periodo === agora
 
-                <div className="mt-3">
-                  {tarefa.status === 'nao_feita' && (
-                    <Botao
-                      onClick={() => aoMarcar(tarefa.id)}
-                      disabled={marcandoId === tarefa.id}
-                      className="min-h-14 text-xl"
-                    >
-                      {marcandoId === tarefa.id ? 'Marcando…' : 'Fiz! ✅'}
-                    </Botao>
+            return (
+              <section
+                key={bloco.periodo ?? 'qualquer-hora'}
+                className={`mb-6 rounded-2xl ${destacado ? 'bg-purple-100 p-3 ring-2 ring-purple-400' : ''}`}
+              >
+                <h3
+                  className={`mb-3 flex items-center gap-2 text-2xl font-bold ${
+                    destacado ? 'text-purple-700' : 'text-gray-800'
+                  }`}
+                >
+                  <span aria-hidden="true">{info.icone}</span>
+                  {info.rotulo}
+                  {destacado && (
+                    <span className="rounded-full bg-purple-600 px-2 py-0.5 text-xs font-bold text-white">
+                      Agora
+                    </span>
                   )}
+                </h3>
 
-                  {tarefa.status === 'pendente' && (
-                    <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-amber-50 text-center text-lg font-medium text-amber-700">
-                      ⏳ Esperando o papai conferir
-                    </div>
-                  )}
+                <ul className="flex flex-col gap-3">
+                  {bloco.tarefas.map((tarefa) => (
+                    <li key={tarefa.id} className="rounded-2xl bg-white p-4 shadow-sm">
+                      <div className="flex items-center gap-3">
+                        <span className="text-3xl" aria-hidden="true">
+                          {tarefa.icone || '⭐'}
+                        </span>
+                        <div className="flex-1">
+                          <p className="text-lg font-semibold text-gray-900">{tarefa.titulo}</p>
+                          <p className="text-sm text-gray-500">
+                            {tarefa.valor_cruzeiro} Cruzeiros
+                            {tarefa.horario && ` · ${formatarHorario(tarefa.horario)}`}
+                          </p>
+                        </div>
+                      </div>
 
-                  {tarefa.status === 'aprovada' && (
-                    <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-green-50 text-center text-lg font-medium text-green-700">
-                      🎉 Você ganhou {tarefa.valorCreditado} Cruzeiros!
-                    </div>
-                  )}
+                      <div className="mt-3">
+                        {tarefa.status === 'nao_feita' && (
+                          <Botao
+                            onClick={() => aoMarcar(tarefa.id)}
+                            disabled={marcandoId === tarefa.id}
+                            className="min-h-14 text-xl"
+                          >
+                            {marcandoId === tarefa.id ? 'Marcando…' : 'Fiz! ✅'}
+                          </Botao>
+                        )}
 
-                  {tarefa.status === 'rejeitada' && (
-                    <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-blue-50 px-2 text-center text-lg font-medium text-blue-700">
-                      💙 Essa não valeu dessa vez. Vamos tentar de novo amanhã!
-                    </div>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+                        {tarefa.status === 'pendente' && (
+                          <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-amber-50 text-center text-lg font-medium text-amber-700">
+                            ⏳ Esperando o papai conferir
+                          </div>
+                        )}
+
+                        {tarefa.status === 'aprovada' && (
+                          <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-green-50 text-center text-lg font-medium text-green-700">
+                            🎉 Você ganhou {tarefa.valorCreditado} Cruzeiros!
+                          </div>
+                        )}
+
+                        {tarefa.status === 'rejeitada' && (
+                          <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-blue-50 px-2 text-center text-lg font-medium text-blue-700">
+                            💙 Essa não valeu dessa vez. Vamos tentar de novo amanhã!
+                          </div>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )
+          })
         )}
       </div>
     </div>
