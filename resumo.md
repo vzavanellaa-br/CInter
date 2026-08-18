@@ -45,7 +45,21 @@ nenhum segredo no repositório.
 por hora e não serve para produção. Precisa de SMTP próprio antes de ter usuários.
 Durante o desenvolvimento, desligar a confirmação de e-mail resolve.
 
-**Próximo:** Fase 2 — economia do Cruzeiro (tarefas, aprovação, carteira, loja).
+## Fase 2 — em andamento
+
+| Passo | O que | Situação |
+|---|---|---|
+| 2A | Banco: tarefas, execuções, carteiras, transações + funções de moeda | ✅ auditado |
+| 2B | Banco: recompensas, resgates, regras e bônus de consistência | ✅ auditado |
+| 2C | Telas da rotina (responsável e criança) | ✅ auditado |
+| — | **Correção do estorno** (`origem='estorno'` + `FOR UPDATE`) | ⚠️ **PENDENTE** |
+| 2D | Telas da loja e do bônus | a fazer |
+
+**Conta de teste no banco:** `teste.cinter.2c@gmail.com` — família "Família Cruzeiro
+Teste", criança Miguel, saldo 10, com histórico para ver o extrato.
+A família real (Zavanella / Lorenzo) está sem tarefas ainda.
+
+**Para ver rodando:** `npm run dev` na pasta, abrir `http://localhost:5173`.
 
 ⚠️ **Nunca versionar `Supabase Info.md`** — contém chaves e string de conexão.
 Já está no `.gitignore`; o ideal é movê-lo para fora da pasta do repositório.

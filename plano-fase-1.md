@@ -61,7 +61,7 @@ Seu filho é um perfil dentro da sua conta, nunca uma conta própria.** É o que
 lei brasileira exige para dados de criança, e por acaso também deixa o produto
 mais simples.
 
-**Resultado:** você loga, cria a família "Zavanella", cadastra o Miguel de 8 anos,
+**Resultado:** você loga, cria a família Zavanella, cadastra o Lorenzo,
 fecha e abre de novo — e continua lá.
 
 ## Como vou trabalhar
