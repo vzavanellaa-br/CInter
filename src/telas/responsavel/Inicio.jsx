@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { useFamilia } from '../../hooks/useFamilia'
+import { useAprovacoes } from '../../hooks/useAprovacoes'
 import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
 import CadastrarCrianca from './CadastrarCrianca'
+import CriancaItem from './CriancaItem'
 
 export default function Inicio() {
   const { sessao, sair } = useAuth()
   const { familia, criancas, carregando, erro, recarregar } = useFamilia(sessao)
+  const { execucoes: pendencias, carregando: carregandoPendencias } = useAprovacoes()
   const navigate = useNavigate()
   const [modalAberto, setModalAberto] = useState(false)
   const [erroSair, setErroSair] = useState('')
@@ -55,6 +58,20 @@ export default function Inicio() {
       <main className="mx-auto max-w-md px-4 py-6">
         <Aviso tipo="erro">{erro || erroSair}</Aviso>
 
+        <div className="mb-6 grid grid-cols-2 gap-3">
+          <Botao variante="secundario" onClick={() => navigate('/inicio/tarefas')}>
+            Tarefas
+          </Botao>
+          <Botao variante="secundario" onClick={() => navigate('/inicio/aprovacoes')}>
+            Aprovações
+            {!carregandoPendencias && pendencias.length > 0 && (
+              <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-xs font-bold text-white">
+                {pendencias.length}
+              </span>
+            )}
+          </Botao>
+        </div>
+
         <div className="mb-4 mt-2 flex items-center justify-between">
           <h2 className="text-base font-semibold text-gray-800">Crianças</h2>
           <Botao variante="secundario" className="!w-auto px-4" onClick={() => setModalAberto(true)}>
@@ -67,18 +84,7 @@ export default function Inicio() {
         ) : (
           <ul className="flex flex-col gap-3">
             {criancas.map((crianca) => (
-              <li
-                key={crianca.id}
-                className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
-              >
-                <span className="text-3xl" aria-hidden="true">
-                  {crianca.avatar}
-                </span>
-                <div>
-                  <p className="font-medium text-gray-900">{crianca.apelido || crianca.nome}</p>
-                  <p className="text-sm text-gray-500">Nascimento: {crianca.ano_nascimento}</p>
-                </div>
-              </li>
+              <CriancaItem key={crianca.id} crianca={crianca} />
             ))}
           </ul>
         )}
