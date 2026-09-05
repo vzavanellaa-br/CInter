@@ -33,9 +33,10 @@ extrato. 11 tabelas com RLS ligada, 13 funções `SECURITY DEFINER`.
 
 ## Próxima task
 
-**T-01 — Loja de recompensas (lado do responsável).**
-Cadastrar, editar, desativar recompensa. Nada do lado da criança ainda.
-O prompt completo está em `FILA.md`.
+**T-00 — Consertar o deploy da Vercel** (entrou na frente: descoberto em 05/09).
+O app está publicado mas qualquer rota interna devolve 404. Prompt em `FILA.md`.
+
+Depois: **T-01 — Loja de recompensas (lado do responsável).**
 
 ---
 
@@ -74,7 +75,7 @@ O prompt completo está em `FILA.md`.
 |---|---|
 | Supabase | ✅ `cinter`, ref `rslbbsuwvxkfswlgixxg`, sa-east-1 |
 | GitHub | ✅ `github.com/vzavanellaa-br/CInter`, branch `main` |
-| Vercel | ❌ falta — fase 2F |
+| Vercel | ⚠️ projeto `c-inter` criado e ligado ao GitHub, build Ready — **mas `/entrar` devolve 404**: falta o rewrite de SPA. Ver T-00 |
 | SMTP próprio | ❌ falta — hoje: 2 e-mails/hora, não serve para usuário real |
 | PWA / manifest | ❌ falta — fase 2F |
 | Railway | ⛔ decidido não usar |

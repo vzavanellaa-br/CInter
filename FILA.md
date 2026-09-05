@@ -5,6 +5,59 @@ Ao terminar: um commit único, e o hash volta para cá.
 
 ---
 
+## T-00 — Consertar o deploy da Vercel (SPA + variáveis)
+**Status:** pronta para enviar · **Fase:** 2F (antecipada) · **Commit:** —
+
+Descoberto em 05/09: o projeto `c-inter` está no ar e o build passa, mas
+`https://c-inter.vercel.app/entrar` devolve **404**. O motivo é conhecido: um app
+de página única com `BrowserRouter` precisa que o servidor devolva o `index.html`
+para qualquer caminho — senão só a raiz funciona, e recarregar a página em
+qualquer tela quebra.
+
+~~~
+Leia CLAUDE.md e depois ESTADO.md antes de comecar.
+
+LEMBRETE DE SEGURANCA:
+- Nao imprima o conteudo de .env.local nem de "Supabase Info.md". Se precisar
+  conferir, mostre apenas o NOME das variaveis, nunca o valor.
+- Nada de chave de servico (service_role) no front nem na Vercel. So a anon key.
+- Nao mexa em banco, tela ou regra de negocio nesta task.
+
+TASK: T-00 — Consertar o deploy da Vercel (rewrite de SPA + variaveis)
+
+CONTEXTO: o projeto c-inter esta ligado ao repositorio e o build passa, mas
+https://c-inter.vercel.app/entrar devolve 404 — conferido. O app usa
+BrowserRouter, entao a Vercel precisa devolver index.html para qualquer caminho.
+Sem isso, so a raiz abre e recarregar em qualquer tela quebra. Provavelmente as
+variaveis do Supabase tambem nao estao configuradas la, o que deixaria a tela em
+branco: src/lib/supabase.js lanca erro quando faltam.
+
+ARQUIVOS:
+- criar vercel.json na raiz
+
+CRITERIO DE PRONTO:
+1. vercel.json com rewrite mandando qualquer caminho para /index.html.
+2. Confirmar no painel da Vercel que existem as variaveis VITE_SUPABASE_URL e
+   VITE_SUPABASE_ANON_KEY nos ambientes Production, Preview e Development. Se
+   faltarem, me diga quais faltam e em quais ambientes — NAO cole os valores no
+   chat. Eu configuro no painel.
+3. Depois do proximo deploy, provar que funciona abrindo estas URLs e me dizendo
+   o que cada uma devolve:
+   - https://c-inter.vercel.app/
+   - https://c-inter.vercel.app/entrar
+   - https://c-inter.vercel.app/criar-conta
+4. Se a tela abrir em branco, ler o console do navegador e me trazer a mensagem.
+
+NAO FACA:
+- Nao mude nenhuma tela, rota, hook ou migration.
+- Nao crie dominio proprio, nao ligue Analytics, nao mexa em protecao de deploy.
+- Nao rode nada contra o banco.
+
+AO FINAL: um commit unico explicando o PORQUE, e me devolva o hash.
+~~~
+
+---
+
 ## T-01 — Loja de recompensas, lado do responsável
 **Status:** pronta para enviar · **Fase:** 2D · **Commit:** —
 
