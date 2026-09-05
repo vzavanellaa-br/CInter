@@ -34,3 +34,7 @@ Supabase Info.md
 *.njsproj
 *.sln
 *.sw?
+
+# Endurecido em 05/09/2026: qualquer variante de env, backup ou anotacao de chave
+.env*
+*.bak

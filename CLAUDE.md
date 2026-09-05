@@ -18,6 +18,12 @@ fictícia (Cruzeiro). Produto comercial multi-família.
    no auth nem e-mail (LGPD art. 14).
 7. Nunca coletar e-mail, telefone ou localização de criança.
 8. Chave de serviço do Supabase jamais no front nem no repositório.
+8b. **NUNCA crie variável com prefixo `VITE_` que contenha segredo.** Tudo que
+   começa com `VITE_` é embutido no pacote JavaScript e fica legível por qualquer
+   visitante do site. Só `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` podem ter
+   esse prefixo. Segredo de servidor não tem consumidor no CInter — não há backend.
+8c. **Nunca leia `import.meta.env` como objeto inteiro.** Leia sempre pelo nome da
+   variável. Ler o objeto inteiro arrasta toda variável `VITE_` para o pacote.
 9. Sem anúncios e sem rastreamento de terceiros na área da criança.
 
 ## Stack
