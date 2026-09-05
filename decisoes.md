@@ -68,3 +68,32 @@ Uma linha por decisão, com data e motivo. Serve para não refazer discussão j�
 - [ ] Identidade visual e mascote
 - [ ] Preço da assinatura
 - [ ] PWA apenas ou também lojas de aplicativo
+
+## 05/09/2026 — Retomada: varredura, orquestração e rumo para as lojas
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 38 | Adotada a **lógica de orquestração** com quatro documentos: `ESTADO.md` (o executor lê sempre), `FILA.md` (só a entrada dele), `PLANO.md` (só o Cowork), `CLAUDE.md` (como o repositório é) | `resumo.md` estava errado em 4 pontos após 3 semanas parado. Documento único vira mentira; separar por público é o que faz o custo cair |
+| 39 | `resumo.md` aposentado, vira ponteiro para `ESTADO.md` | Um fato mora em um lugar só |
+| 40 | **Conteúdo é escada de níveis, não série escolar.** Nível de entrada por teste de nivelamento; progressão por assertividade | Decisão do PO. Ementa de 1º ano varia demais entre escolas; e tira o CInter da briga de BNCC, onde as edtechs já venceram pelo canal escola |
+| 41 | Níveis pré-escolares de **conteúdo** entram; interface para 2–5 anos **não** | Reconcilia com a decisão 4. Quem mais precisa do nível 1 é a criança de 7 anos com defasagem — mesma interface |
+| 42 | **Sem vidas e sem corações** no conteúdo | Vida é multa com outro nome; contraria a decisão 12 |
+| 43 | **Não haverá streak separado.** O bônus de consistência já é a ofensiva | `regras_bonus` + `fechar_semana_consistencia` já fazem isso, e pagam hábito em vez de unidade |
+| 44 | Refazer lição já concluída paga zero | Senão repetir o nível 1 vira mina de ouro |
+| 45 | **Jogos cortados do escopo**, vão para a fila de adiantamento | Daily Kids fez exatamente isso — 14 minijogos, R$24,90/mês — e tem 430 downloads. Jogo multiplica zero enquanto não há base. Discordância registrada em `PLANO.md` §8 |
+| 46 | **App nativo por Capacitor**, embrulhando o front atual — nunca reescrita em React Native | Jogar fora 2.000 linhas testadas não se paga. Mas a loja rejeita webview puro: push, offline e PIN entram na mesma janela |
+| 47 | **Play Store primeiro; App Store depois do primeiro assinante** | US$99/ano, Mac para build e revisão mais dura em app infantil |
+| 48 | Uma trilha só (Matemática) no lançamento | Fatia fina prova a tese; a segunda trilha é 2027 |
+| 49 | **Nome comercial e nome da moeda decididos até 22/09**, em conversa própria | O nome vira domínio e *bundle id*, que não muda depois de publicado. E o nome da moeda está no schema — barato hoje, janela de risco depois |
+| 50 | Revisão pedagógica humana é **obrigatória** antes de publicar qualquer nível, e vira selo na loja | Conteúdo por AI sem revisor é risco; com revisor é o diferencial que o concorrente não copia rápido |
+| 51 | Conta de desenvolvedor Google aberta em **setembro**, e no CNPJ da Otimus Hub se possível | Conta pessoal nova exige 12 testadores por 14 dias antes de publicar. É o risco de calendário mais subestimado do plano |
+| 52 | Decidir **cobrança web vs. compra dentro do app** antes de escrever a tela de assinatura | 15–30% de comissão muda o preço; vender por fora e liberar no app é rejeição certa |
+
+### Pendências abertas (atualizadas)
+
+- [ ] Nome comercial definitivo — **prazo 22/09**
+- [ ] Nome da moeda — **prazo 22/09**
+- [ ] Identidade visual e mascote — **prazo 22/09**
+- [ ] Combinado escrito com a revisora pedagógica e o revisor de matemática (escopo, crédito, contrapartida)
+- [ ] Preço da assinatura e modelo de cobrança (T8 do `PLANO.md`)
+- [ ] Quantos níveis a escada terá no lançamento — definir depois de medir o tempo de revisão de 1 lote
