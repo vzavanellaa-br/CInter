@@ -33,6 +33,30 @@ para copiar e colar sem edição. Um passo por prompt. Sem "e depois faça tamb�
 | **Vercel** | ❌ Falta | Só quando houver o que publicar |
 | **Railway** | ⛔ **Não usar** | O CInter não tem backend próprio — o front fala direto com o Supabase. Railway seria custo e complexidade sem função. Se um dia surgir necessidade real (processamento pesado, integração que exige segredo no servidor), reavaliamos. |
 
+## MCPs — situação real, conferida em 05/09/2026
+
+O Vinicius prefere operar tudo por MCP. Estado de cada um, nos dois lados:
+
+| MCP | No Cowork (orquestrador) | No code (VS Code) |
+|---|---|---|
+| **Supabase** | ✅ **ligado e em uso.** Auditoria de 05/09 feita por aqui: 11 tabelas, 13 funções, advisors, extensões | ✅ ele configura lá |
+| **Vercel** | ⚠️ **instalado na conta, mas desligado neste chat.** Ligar nas configurações de conectores do chat | ✅ configurar junto com a Fase 2F |
+| **GitHub** | ❌ **não existe conector no diretório desta conta** — e não faz falta: a pasta do projeto está conectada, então o Cowork lê o repositório direto com `git`. Vê a árvore de trabalho, não só o remoto | ✅ git nativo, é o caminho certo |
+| **Railway** | ⛔ **não usar** (decisão 20) | ⛔ |
+
+**Por que o Railway continua fora, mesmo com MCP disponível:** o CInter não tem
+backend próprio — o front fala direto com o Supabase. O que o Railway resolveria
+aqui (agendamento do bônus semanal, envio de push, webhook de pagamento) o
+Supabase faz com **pg_cron** e **Edge Functions**, dentro do mesmo banco, sem mais
+um serviço para pagar, monitorar e manter segredo. Reavaliar só se aparecer
+processamento pesado de verdade — geração de conteúdo em lote é o candidato mais
+provável.
+
+**Divisão que não muda:** auditoria e leitura de estado ficam no Cowork (Supabase
+e Vercel por MCP, repositório por `git` na pasta conectada). Escrita de código,
+migration e deploy ficam no code. Isso é o que impede o orquestrador de escrever
+código que "parece certo" sem nunca rodar.
+
 ## MCPs
 
 O Vinicius já usa MCPs de Supabase, Vercel e Railway no projeto **uaupet**
