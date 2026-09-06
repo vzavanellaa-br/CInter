@@ -59,7 +59,7 @@ AO FINAL: um commit unico explicando o PORQUE, e me devolva o hash.
 ---
 
 ## T-01 — Loja de recompensas, lado do responsável
-**Status:** ATUAL — pronta para enviar · **Fase:** 2D · **Commit:** —
+**Status:** FEITA em 06/09 — aguarda teste de tela pelo PO · **Fase:** 2D · **Commit:** `3d18352`
 
 O prompt abaixo vai inteiro para o code, sem edição:
 
