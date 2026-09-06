@@ -1,6 +1,7 @@
 # CInter — ESTADO
 
 > **Carregue a skill `cinter-fluxo` e leia este arquivo, nesta ordem, sempre.**
+> A skill mora no proprio repositorio: `.claude/skills/cinter-fluxo/SKILL.md`.
 > Ele diz onde o projeto está hoje.
 > Como o repositório é: `CLAUDE.md`. Regras de produto: skill `cinter-produto`.
 > **Não leia o `PLANO.md`** — ele é do orquestrador e você não precisa dele.

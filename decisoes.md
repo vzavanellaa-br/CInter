@@ -106,3 +106,11 @@ Uma linha por decisão, com data e motivo. Serve para não refazer discussão j�
 | 54 | Todo prompt para o code passa a começar com `Carregue a skill cinter-fluxo. Depois leia ESTADO.md.` | Uma linha substitui vinte |
 | 55 | `vercel.json` com rewrite de SPA; deploy validado em 3 URLs | Sem ele só a raiz abria. Conferido pelo Cowork por fora, não pelo relatório do code |
 | 56 | Na Vercel, as duas variáveis ficam com Type **Config**, não Secret | Secret é write-only e conflita com o prefixo `VITE_`, que significa "publique no navegador". A anon key é pública por desenho; quem protege é a RLS |
+
+## 06/09/2026 — Onde as skills do executor moram
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 57 | **A skill `cinter-fluxo` mora no repositório**, em `.claude/skills/cinter-fluxo/SKILL.md` | Skill salva na conta Claude sincroniza para o Cowork, **não** para o Claude Code na máquina. O code abriu a T-01, não achou a skill e parou — corretamente. Skill do executor tem que viajar com o repositório: versionada, revisável em diff e disponível em qualquer máquina que clone o projeto |
+| 58 | Regra geral: **skill do executor vai para o repositório; skill do orquestrador fica na conta** | `cinter-fluxo` (ritual) e `cinter-stack` (padrões de código) são do executor. `cinter-produto` (escopo, economia, fases) é de quem decide, e continua na conta |
+| 59 | Toda skill nova para o code entra por commit, nunca só pelo painel | Foi assim que a `cinter-fluxo` ficou invisível por um ciclo inteiro |
