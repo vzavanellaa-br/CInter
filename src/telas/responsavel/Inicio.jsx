@@ -70,6 +70,9 @@ export default function Inicio() {
               </span>
             )}
           </Botao>
+          <Botao variante="secundario" className="col-span-2" onClick={() => navigate('/inicio/recompensas')}>
+            Recompensas
+          </Botao>
         </div>
 
         <div className="mb-4 mt-2 flex items-center justify-between">

@@ -5,6 +5,7 @@ import PrimeiroAcesso from '../telas/responsavel/PrimeiroAcesso'
 import Inicio from '../telas/responsavel/Inicio'
 import Tarefas from '../telas/responsavel/Tarefas'
 import Aprovacoes from '../telas/responsavel/Aprovacoes'
+import Recompensas from '../telas/responsavel/Recompensas'
 import DetalheCrianca from '../telas/responsavel/DetalheCrianca'
 import MinhasTarefas from '../telas/crianca/MinhasTarefas'
 import RotaProtegida from './RotaProtegida'
@@ -45,6 +46,14 @@ export default function AppRotas() {
           element={
             <RotaProtegida>
               <Aprovacoes />
+            </RotaProtegida>
+          }
+        />
+        <Route
+          path="/inicio/recompensas"
+          element={
+            <RotaProtegida>
+              <Recompensas />
             </RotaProtegida>
           }
         />
