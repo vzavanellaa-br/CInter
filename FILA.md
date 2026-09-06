@@ -117,6 +117,28 @@ devolva o hash.
 
 ---
 
+
+### Adendo de 06/09 — plano aprovado com três correções
+
+O code remapeou e apresentou o plano; aprovado com estes ajustes:
+
+1. **Rótulo da moeda vai para um arquivo só.** Criar `src/lib/moeda.js` exportando
+   o nome visível da moeda, e usar isso nas telas novas. Citar a coluna existente
+   `tarefas.valor_cruzeiro` é inevitável e está liberado — a trava é sobre criar
+   *nomes novos*. Não refatorar as telas antigas nesta task.
+2. **O ganho semanal precisa somar o bônus de consistência**, não só as tarefas:
+   `regras_bonus.valor_bonus` quando `ativo`. Sem ele a faixa sugerida subestima
+   o que a criança pode ganhar, e o pai precifica errado.
+3. **Faixa sugerida: piso = meia semana, teto = quatro semanas** (não três). A
+   regra de produto é "uma recompensa pequena por semana e uma grande por mês".
+
+**O teste de RLS já foi feito pelo Cowork** em 06/09, direto no banco, simulando
+os dois responsáveis. Resultado: 13 tarefas no total, cada responsável enxerga
+só as suas (6 e 7), e a consulta explícita pelas tarefas da outra família devolve
+zero. O code não precisa refazer — testa a tela com uma conta que o PO fornecer.
+
+---
+
 ## T-02 — Loja e carteira, lado da criança
 **Status:** aguarda T-01 · **Fase:** 2D
 Vitrine, pedido de resgate, saldo em destaque, "faltam X para isso".
