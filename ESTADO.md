@@ -1,10 +1,11 @@
 # CInter — ESTADO
 
-> **Leia este arquivo primeiro, sempre.** Ele diz onde o projeto está hoje.
+> **Carregue a skill `cinter-fluxo` e leia este arquivo, nesta ordem, sempre.**
+> Ele diz onde o projeto está hoje.
 > Como o repositório é: `CLAUDE.md`. Regras de produto: skill `cinter-produto`.
 > **Não leia o `PLANO.md`** — ele é do orquestrador e você não precisa dele.
 
-**Atualizado em:** 05/09/2026
+**Atualizado em:** 05/09/2026 (após T-00)
 
 ---
 
@@ -33,10 +34,9 @@ extrato. 11 tabelas com RLS ligada, 13 funções `SECURITY DEFINER`.
 
 ## Próxima task
 
-**T-00 — Consertar o deploy da Vercel** (entrou na frente: descoberto em 05/09).
-O app está publicado mas qualquer rota interna devolve 404. Prompt em `FILA.md`.
-
-Depois: **T-01 — Loja de recompensas (lado do responsável).**
+**T-01 — Loja de recompensas (lado do responsável).**
+Cadastrar, editar, desativar recompensa. Nada do lado da criança ainda.
+O prompt completo está em `FILA.md`.
 
 ---
 
@@ -75,7 +75,7 @@ Depois: **T-01 — Loja de recompensas (lado do responsável).**
 |---|---|
 | Supabase | ✅ `cinter`, ref `rslbbsuwvxkfswlgixxg`, sa-east-1 |
 | GitHub | ✅ `github.com/vzavanellaa-br/CInter`, branch `main` |
-| Vercel | ⚠️ projeto `c-inter` criado e ligado ao GitHub, build Ready — **mas `/entrar` devolve 404**: falta o rewrite de SPA. Ver T-00 |
+| Vercel | ✅ `c-inter.vercel.app` no ar, rotas internas OK (`vercel.json`, commit `833d1de`), variáveis configuradas nos 3 ambientes |
 | SMTP próprio | ❌ falta — hoje: 2 e-mails/hora, não serve para usuário real |
 | PWA / manifest | ❌ falta — fase 2F |
 | Railway | ⛔ decidido não usar |

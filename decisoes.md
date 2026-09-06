@@ -97,3 +97,12 @@ Uma linha por decisão, com data e motivo. Serve para não refazer discussão j�
 - [ ] Combinado escrito com a revisora pedagógica e o revisor de matemática (escopo, crédito, contrapartida)
 - [ ] Preço da assinatura e modelo de cobrança (T8 do `PLANO.md`)
 - [ ] Quantos níveis a escada terá no lançamento — definir depois de medir o tempo de revisão de 1 lote
+
+## 05/09/2026 — Skill de processo e deploy
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 53 | Criada a skill **`cinter-fluxo`** — o ritual de execução de toda task | O documento de orquestração prevê "carregar a skill de processo" na primeira linha do prompt. Sem ela, o ritual (o que ler, os lembretes de segurança, quando parar, como reportar) era recopiado em cada prompt — o que fazia os prompts crescerem, que é justamente o sinal de que algo quebrou. Agora o prompt carrega só o que é da task |
+| 54 | Todo prompt para o code passa a começar com `Carregue a skill cinter-fluxo. Depois leia ESTADO.md.` | Uma linha substitui vinte |
+| 55 | `vercel.json` com rewrite de SPA; deploy validado em 3 URLs | Sem ele só a raiz abria. Conferido pelo Cowork por fora, não pelo relatório do code |
+| 56 | Na Vercel, as duas variáveis ficam com Type **Config**, não Secret | Secret é write-only e conflita com o prefixo `VITE_`, que significa "publique no navegador". A anon key é pública por desenho; quem protege é a RLS |

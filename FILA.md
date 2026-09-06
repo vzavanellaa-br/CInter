@@ -6,7 +6,7 @@ Ao terminar: um commit único, e o hash volta para cá.
 ---
 
 ## T-00 — Consertar o deploy da Vercel (SPA + variáveis)
-**Status:** pronta para enviar · **Fase:** 2F (antecipada) · **Commit:** —
+**Status:** ✅ concluída e conferida pelo Cowork em 05/09 · **Commit:** `833d1de`
 
 Descoberto em 05/09: o projeto `c-inter` está no ar e o build passa, mas
 `https://c-inter.vercel.app/entrar` devolve **404**. O motivo é conhecido: um app
@@ -15,7 +15,7 @@ para qualquer caminho — senão só a raiz funciona, e recarregar a página em
 qualquer tela quebra.
 
 ~~~
-Leia CLAUDE.md e depois ESTADO.md antes de comecar.
+Carregue a skill cinter-fluxo. Depois leia ESTADO.md.
 
 LEMBRETE DE SEGURANCA:
 - Nao imprima o conteudo de .env.local nem de "Supabase Info.md". Se precisar
@@ -59,12 +59,12 @@ AO FINAL: um commit unico explicando o PORQUE, e me devolva o hash.
 ---
 
 ## T-01 — Loja de recompensas, lado do responsável
-**Status:** pronta para enviar · **Fase:** 2D · **Commit:** —
+**Status:** ATUAL — pronta para enviar · **Fase:** 2D · **Commit:** —
 
 O prompt abaixo vai inteiro para o code, sem edição:
 
 ~~~
-Leia CLAUDE.md e depois ESTADO.md antes de começar.
+Carregue a skill cinter-fluxo. Depois leia ESTADO.md.
 
 LEMBRETE DE SEGURANCA:
 - Toda movimentacao de moeda roda em funcao do banco. O front nunca informa valor.
