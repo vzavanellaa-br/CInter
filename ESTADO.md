@@ -6,7 +6,7 @@
 > Como o repositório é: `CLAUDE.md`. Regras de produto: skill `cinter-produto`.
 > **Não leia o `PLANO.md`** — ele é do orquestrador e você não precisa dele.
 
-**Atualizado em:** 05/09/2026 (após T-00)
+**Atualizado em:** 06/09/2026 (após T-01b)
 
 ---
 
@@ -18,14 +18,15 @@ e horário, marcação pela criança, aprovação/rejeição pelo responsável, 
 extrato. 11 tabelas com RLS ligada, 13 funções `SECURITY DEFINER`.
 
 **Fase atual: 2D — fechar o ciclo do dinheiro.**
+Feito: T-00 (deploy), T-01 (loja do responsável), T-01b (moeda vira Realeta).
 
 ---
 
 ## As três coisas quebradas hoje
 
-1. **A loja não existe em tela.** O banco sabe tudo (`recompensas`, `resgates`,
-   `resgatar_recompensa`, `entregar_resgate`, `cancelar_resgate`) e não há uma
-   única tela. Zero linhas nas duas tabelas. A criança ganha e não gasta.
+1. **A criança ainda não tem onde gastar.** O responsável já cadastra recompensa
+   (T-01), mas não existe vitrine do lado da criança nem tela de entrega. O
+   ciclo continua aberto: entra moeda, não sai. É a T-02 e a T-03.
 2. **O bônus semanal nunca rodou.** `fechar_semana_consistencia` está correta e
    **ninguém a chama**. Sem ela, o app paga por unidade — o oposto da regra.
 3. **A criança pode aprovar as próprias tarefas.** `/crianca/:id` roda com a
@@ -35,9 +36,8 @@ extrato. 11 tabelas com RLS ligada, 13 funções `SECURITY DEFINER`.
 
 ## Próxima task
 
-**T-01 — Loja de recompensas (lado do responsável).**
-Cadastrar, editar, desativar recompensa. Nada do lado da criança ainda.
-O prompt completo está em `FILA.md`.
+**T-02 — Loja e carteira do lado da criança.**
+Vitrine, saldo em destaque, pedido de resgate. O prompt está em `FILA.md`.
 
 ---
 

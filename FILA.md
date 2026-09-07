@@ -139,10 +139,22 @@ zero. O code não precisa refazer — testa a tela com uma conta que o PO fornec
 
 ---
 
+## T-01b — Nome visível da moeda passa a ser Realeta
+**Status:** ✅ concluída · **Commit:** `3987f71`
+8 arquivos, 10 ocorrências de texto. Busca por "cruzeiro" em `src/` devolve só a
+coluna de banco `valor_cruzeiro`. O singular ficou pendente: as telas escrevem
+"1 Realetas". É regra de plural, não de nome — vira ajuste de outra task.
+
+---
+
 ## T-02 — Loja e carteira, lado da criança
-**Status:** aguarda T-01 · **Fase:** 2D
-Vitrine, pedido de resgate, saldo em destaque, "faltam X para isso".
-Ao pedir, cria `resgate` pendente e o responsável entrega ou cancela.
+**Status:** ATUAL — pronta para enviar · **Fase:** 2D
+
+⚠️ **Fato do banco que muda o desenho da tela:** `resgatar_recompensa` **debita o
+saldo no momento do pedido**, não na entrega. Cria o `resgate` como pendente,
+desconta a carteira, grava a transação e baixa o estoque. Se o responsável
+cancelar, `cancelar_resgate` estorna. A criança precisa entender isso na tela —
+senão ela pede, vê o saldo cair, e acha que perdeu.
 
 ## T-03 — Aprovação de resgate pelo responsável
 **Status:** aguarda T-02 · **Fase:** 2D
