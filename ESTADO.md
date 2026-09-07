@@ -43,9 +43,9 @@ O prompt completo está em `FILA.md`.
 
 ## Travas — o que NÃO fazer
 
-- ⛔ **Não escreva a palavra "cruzeiro" em código novo.** O nome da moeda vai
-  mudar e a decisão ainda não saiu. Em código novo, use a variável/rótulo que já
-  existir; não crie coluna, função ou texto novo com esse nome.
+- ⛔ **Nunca escreva o nome da moeda direto na tela.** Ele agora é **Realeta**
+  e vive em `src/lib/moeda.js`. Importe `NOME_MOEDA` — sempre. Citar a coluna
+  existente `tarefas.valor_cruzeiro` está liberado; renomeá-la só na janela T-04.
 - ⛔ **Não crie tabela de conteúdo educacional.** A fundação do conteúdo é uma
   fase própria com modelo desenhado. Tabela criada antes é tabela para adaptar depois.
 - ⛔ **Não mexa em nada de assinatura, pagamento ou loja de aplicativo.**

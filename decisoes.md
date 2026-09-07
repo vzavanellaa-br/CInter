@@ -149,3 +149,12 @@ desconto maior que o saldo falhar na cara do responsável.
 O PO decidiu manter o desconto, restrito a comportamento grave e com as sete travas
 acima. Registrado para não se rediscutir, e para que, se o efeito aparecer no uso
 real, se saiba de onde veio.
+
+## 06/09/2026 — Nome da moeda decidido
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 69 | **A moeda passa a se chamar "Realeta"** (plural: Realetas) | Decidido pelo PO. Verificado: não colide com produto, marca ou app existente. Legível para o pai ("real pequeno"), fácil para a criança, plural natural, e sugere imagem — realeza, coroa, castelo — o que dá direção para mascote e identidade visual. "Cruzeiro" carregava hiperinflação para o pai e não significava nada para a criança |
+| 70 | **Troca em dois tempos:** o texto visível muda agora (T-01b); o nome da **coluna** `valor_cruzeiro` só muda na janela de schema da T-04 | Texto é front, custo zero e reversível. Renomear coluna é irreversível e vai agrupada com PIN e as tabelas de regras. Trava T5 |
+| 71 | **A trava "não escreva cruzeiro em código novo" está encerrada** | Ela existia porque o nome era indefinido. Agora o nome existe: use `NOME_MOEDA`, sempre |
+| 72 | Fica aberto se o **nome do app** vira "Realeta" também | Não decidir agora. Entra na conversa de nome e identidade visual, prazo 22/09. O nome do app define domínio e bundle id, que não mudam depois de publicado — é decisão maior que a da moeda |
