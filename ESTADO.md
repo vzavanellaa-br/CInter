@@ -6,7 +6,7 @@
 > Como o repositório é: `CLAUDE.md`. Regras de produto: skill `cinter-produto`.
 > **Não leia o `PLANO.md`** — ele é do orquestrador e você não precisa dele.
 
-**Atualizado em:** 06/09/2026 (após T-01b)
+**Atualizado em:** 06/09/2026 (após T-02)
 
 ---
 
@@ -18,7 +18,8 @@ e horário, marcação pela criança, aprovação/rejeição pelo responsável, 
 extrato. 11 tabelas com RLS ligada, 13 funções `SECURITY DEFINER`.
 
 **Fase atual: 2D — fechar o ciclo do dinheiro.**
-Feito: T-00 (deploy), T-01 (loja do responsável), T-01b (moeda vira Realeta).
+Feito: T-00 (deploy), T-01 (loja do responsável), T-01b (moeda vira Realeta),
+T-02 (loja da criança). Falta a T-03 para fechar a 2D.
 
 ---
 
@@ -29,15 +30,18 @@ Feito: T-00 (deploy), T-01 (loja do responsável), T-01b (moeda vira Realeta).
    ciclo continua aberto: entra moeda, não sai. É a T-02 e a T-03.
 2. **O bônus semanal nunca rodou.** `fechar_semana_consistencia` está correta e
    **ninguém a chama**. Sem ela, o app paga por unidade — o oposto da regra.
-3. **A criança pode aprovar as próprias tarefas.** `/crianca/:id` roda com a
-   sessão do responsável e sem PIN.
+3. 🔴 **A criança tem poder de administradora.** `/crianca/:id` roda com a sessão
+   do responsável e sem PIN. Apertando "voltar" ela chega em `/inicio` e pode
+   aprovar as próprias tarefas, mudar valores, criar tarefa e criar recompensa de
+   custo 1 — e agora também gastar. **Enquanto isso existir, nenhuma família de
+   fora pode usar o app.** O marco da Fase 2F está travado na T-04, não na 2D.
 
 ---
 
 ## Próxima task
 
-**T-02 — Loja e carteira do lado da criança.**
-Vitrine, saldo em destaque, pedido de resgate. O prompt está em `FILA.md`.
+**T-03 — Entrega e cancelamento de resgate pelo responsável.**
+Fecha o ciclo do dinheiro. O prompt está em `FILA.md`.
 
 ---
 
