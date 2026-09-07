@@ -148,7 +148,7 @@ coluna de banco `valor_cruzeiro`. O singular ficou pendente: as telas escrevem
 ---
 
 ## T-02 — Loja e carteira, lado da criança
-**Status:** ATUAL — pronta para enviar · **Fase:** 2D
+**Status:** FEITA em 07/09 — aguarda teste de tela pelo PO · **Fase:** 2D · **Commit:** `da5557e`
 
 ⚠️ **Fato do banco que muda o desenho da tela:** `resgatar_recompensa` **debita o
 saldo no momento do pedido**, não na entrega. Cria o `resgate` como pendente,
