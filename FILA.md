@@ -148,7 +148,31 @@ Ao pedir, cria `resgate` pendente e o responsável entrega ou cancela.
 **Status:** aguarda T-02 · **Fase:** 2D
 Entregar e cancelar (com estorno). Já existe função no banco para os dois.
 
-## T-04 — Janela de schema 1: PIN da criança + renomear a moeda
+
+## T-04 — Janela de schema 1 (ampliada em 06/09)
+**Status:** bloqueada pela decisão de nome (ver `PLANO.md` §7) · **Fase:** 2E
+⚠️ Irreversível: apresenta e PARA antes de rodar.
+
+Agora carrega **quatro** grupos, numa janela só, enquanto o banco só tem dado de teste:
+1. PIN da criança em `criancas` (hash, nunca texto puro) + sessão separada
+2. Rename da moeda em coluna e telas
+3. **Regras da casa:** `regras`, `ocorrencias_regra`
+4. **Comportamento e desconto:** `avaliacoes_mensais`, `limites_desconto`,
+   e `'desconto'` no CHECK de `transacoes.origem`
+
+## T-09 — Regras da casa e avaliação mensal (telas)
+**Status:** aguarda T-04 · **Fase:** 2E
+Página de Regras (cadastro e visualização), registro de ocorrência sem valor,
+tela de avaliação mensal com bônus discricionário, e o desconto com as **sete
+travas** da decisão 64 — sem todas elas, não entra.
+
+## T-10 — Calibragem da economia do Cruzeiro
+**Status:** aguarda T-09 · **Fase:** antes da 3
+Com quatro entradas e uma saída, simular o saldo de uma criança ao longo de 3
+meses e ajustar as faixas antes que o conteúdo entre e dobre a entrada.
+
+<!-- versão anterior da T-04, substituída acima -->
+## T-04 (antiga) — PIN da criança + renomear a moeda
 **Status:** **bloqueada por decisão de nome** (ver `PLANO.md` §7) · **Fase:** 2E
 ⚠️ Irreversível: apresenta e PARA antes de rodar.
 Agrupa: coluna de PIN em `criancas` (hash, nunca texto puro), separação da sessão

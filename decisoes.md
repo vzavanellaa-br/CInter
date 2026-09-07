@@ -114,3 +114,38 @@ Uma linha por decisão, com data e motivo. Serve para não refazer discussão j�
 | 57 | **A skill `cinter-fluxo` mora no repositório**, em `.claude/skills/cinter-fluxo/SKILL.md` | Skill salva na conta Claude sincroniza para o Cowork, **não** para o Claude Code na máquina. O code abriu a T-01, não achou a skill e parou — corretamente. Skill do executor tem que viajar com o repositório: versionada, revisável em diff e disponível em qualquer máquina que clone o projeto |
 | 58 | Regra geral: **skill do executor vai para o repositório; skill do orquestrador fica na conta** | `cinter-fluxo` (ritual) e `cinter-stack` (padrões de código) são do executor. `cinter-produto` (escopo, economia, fases) é de quem decide, e continua na conta |
 | 59 | Toda skill nova para o code entra por commit, nunca só pelo painel | Foi assim que a `cinter-fluxo` ficou invisível por um ciclo inteiro |
+
+## 06/09/2026 — Regras da casa, desconto e a economia com quatro fontes
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 60 | **Entra a página de Regras** — princípios da casa, comportamento, moral e ética | Terceiro pilar que nenhum concorrente brasileiro tem. Regra não paga por cumprimento: o reforço é o bônus mensal |
+| 61 | **Bônus mensal discricionário**: o responsável avalia o mês e credita o valor que quiser, com um bilhete curto | Casa com a decisão 13 (recompensa hábito, não unidade) e com a economia de uma recompensa grande por mês |
+| 62 | **Registro de ocorrência sem valor**: o responsável marca que a regra foi quebrada, sem mexer em saldo | Transforma a avaliação mensal em conversa com fatos em vez de memória |
+| 63 | **DECISÃO DO PO, CONTRA RECOMENDAÇÃO: existe desconto de Cruzeiro** por desrespeito, agressão ou comportamento grave | O PO quer que a criança saiba que perde ao desrespeitar. Discordância registrada abaixo; a decisão 12 (sem multa) fica revogada em parte — só para comportamento grave, nunca para tarefa não feita |
+| 64 | **Sete travas obrigatórias no desconto** (ver abaixo). Sem TODAS elas, o desconto não entra | Multa sem trava é o mecanismo que ensina a criança a esconder o erro. As travas existem para reduzir esse efeito ao mínimo |
+| 65 | Nunca usar as palavras "multa" ou "penalidade" na interface. O termo é **desconto** | A palavra ensina o enquadramento mesmo quando o valor é pequeno |
+| 66 | **Tarefa não feita continua sem desconto.** O desconto é só de comportamento | Deixar de fazer a cama nunca tira moeda; a consequência segue sendo não ganhar |
+| 67 | **Lição de conteúdo paga; não fazer apenas não paga** (Fase 3) | Confirmado pelo PO. Mantém a decisão 14 |
+| 68 | Antes da Fase 3, fazer a **calibragem da economia** | Com quatro entradas (tarefa, bônus semanal, bônus mensal, lição) e uma saída (loja), o Cruzeiro infla e a loja perde sentido |
+
+### As sete travas do desconto (decisão 64)
+
+1. **Nunca automático.** Só um responsável, decidindo na hora. Regra quebrada não desconta sozinha.
+2. **Motivo obrigatório**, em texto livre curto, e ele aparece no extrato da criança. Sem motivo, o botão não envia.
+3. **Teto por ocorrência**, definido pela família. Sugestão padrão do app: 100.
+4. **Teto mensal acumulado**, também da família. Sem ele, dez descontos de 100 zeram tudo e a trava 3 vira decoração.
+5. **Saldo nunca negativo.** Se o desconto passa do saldo, desconta até zerar e registra o valor efetivo. **Criança não tem dívida.**
+6. **Alerta de desproporção antes de confirmar**, com número na tela: "Isso é X% do que ele tem" e "equivale a Y semanas de tarefas". Confirmação em dois passos.
+7. **Arrependimento em 24h.** O responsável desfaz e o valor volta, via `origem='estorno'`, que já existe. O desconto acontece no calor do momento; a trava existe para isso.
+
+### Discordância registrada (decisão 63)
+
+O Cowork recomendou não haver desconto, por três motivos: multa ensina a criança a
+esconder o erro em vez de corrigi-lo; contamina o significado da moeda, que precisa
+valer "eu construí isso"; e `carteiras.saldo >= 0` é trava de banco, o que faria um
+desconto maior que o saldo falhar na cara do responsável.
+
+O PO decidiu manter o desconto, restrito a comportamento grave e com as sete travas
+acima. Registrado para não se rediscutir, e para que, se o efeito aparecer no uso
+real, se saiba de onde veio.
