@@ -162,7 +162,7 @@ senão ela pede, vê o saldo cair, e acha que perdeu.
 família". Varrer o resto do app pelo mesmo padrão. Decisão 73.
 
 ## T-03 — Aprovação de resgate pelo responsável
-**Status:** aguarda T-02 · **Fase:** 2D
+**Status:** FEITA em 07/09 — aguarda teste de tela pelo PO · **Fase:** 2D · **Commit:** `4a03e6d`
 Entregar e cancelar (com estorno). Já existe função no banco para os dois.
 
 
