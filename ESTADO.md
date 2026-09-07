@@ -6,7 +6,7 @@
 > Como o repositório é: `CLAUDE.md`. Regras de produto: skill `cinter-produto`.
 > **Não leia o `PLANO.md`** — ele é do orquestrador e você não precisa dele.
 
-**Atualizado em:** 06/09/2026 (após T-02)
+**Atualizado em:** 06/09/2026 — **Fase 2D FECHADA**
 
 ---
 
@@ -18,16 +18,20 @@ e horário, marcação pela criança, aprovação/rejeição pelo responsável, 
 extrato. 11 tabelas com RLS ligada, 13 funções `SECURITY DEFINER`.
 
 **Fase atual: 2D — fechar o ciclo do dinheiro.**
-Feito: T-00 (deploy), T-01 (loja do responsável), T-01b (moeda vira Realeta),
-T-02 (loja da criança). Falta a T-03 para fechar a 2D.
+✅ **O ciclo do dinheiro está completo pela primeira vez:** a criança marca, o
+responsável aprova, a moeda entra, ela pede na loja, a moeda sai, o responsável
+entrega ou devolve. T-00, T-01, T-01b, T-02 e T-03 fechadas.
+
+**Antes da T-04, dois acertos pequenos: T-02b e T-03b.**
 
 ---
 
 ## As três coisas quebradas hoje
 
-1. **A criança ainda não tem onde gastar.** O responsável já cadastra recompensa
-   (T-01), mas não existe vitrine do lado da criança nem tela de entrega. O
-   ciclo continua aberto: entra moeda, não sai. É a T-02 e a T-03.
+1. 🔴 **Aprovar e Rejeitar são irreversíveis e não têm confirmação.** Dois botões
+   irmãos, colados, na tela de Aprovações. Aprovar credita moeda e o banco diz por
+   escrito que estornar "ainda não está implementado". Rejeitar não volta atrás: a
+   criança fez a tarefa, o pai errou o botão, e não há conserto no app. É a T-03b.
 2. **O bônus semanal nunca rodou.** `fechar_semana_consistencia` está correta e
    **ninguém a chama**. Sem ela, o app paga por unidade — o oposto da regra.
 3. 🔴 **A criança tem poder de administradora.** `/crianca/:id` roda com a sessão

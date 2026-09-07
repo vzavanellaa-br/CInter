@@ -156,6 +156,11 @@ desconta a carteira, grava a transação e baixa o estoque. Se o responsável
 cancelar, `cancelar_resgate` estorna. A criança precisa entender isso na tela —
 senão ela pede, vê o saldo cair, e acha que perdeu.
 
+## T-03b — Confirmação em Aprovar e Rejeitar (junto com a T-02b)
+**Status:** ATUAL · **Fase:** 2D (polimento)
+Mesmo padrão da decisão 78, encontrado no vizinho. Ambos irreversíveis: o banco
+não tem estorno de aprovação, e rejeitada não volta a ser aprovada.
+
 ## T-02b — Tirar "papai" dos textos da criança
 **Status:** aguarda T-02 · **Fase:** 2D
 `MinhasTarefas.jsx` diz "Esperando o papai conferir". Trocar por "alguém da
@@ -182,6 +187,13 @@ Agora carrega **quatro** grupos, numa janela só, enquanto o banco só tem dado 
 Página de Regras (cadastro e visualização), registro de ocorrência sem valor,
 tela de avaliação mensal com bônus discricionário, e o desconto com as **sete
 travas** da decisão 64 — sem todas elas, não entra.
+
+## T-11 — Desfazer aprovação e crédito manual (banco)
+**Status:** aguarda decisão · **Fase:** junto da T-04 ou depois
+Duas lacunas que a T-03b só previne, não resolve: não existe estorno de aprovação
+errada, e `transacoes.origem` prevê `'ajuste_manual'` sem nenhuma função que o
+crie. Estornar um crédito dado por engano **não é multa** — é conserto de erro —
+mas precisa ser desenhado com cuidado para não virar porta de castigo.
 
 ## T-10 — Calibragem da economia do Cruzeiro
 **Status:** aguarda T-09 · **Fase:** antes da 3
