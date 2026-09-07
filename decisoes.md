@@ -176,3 +176,13 @@ real, se saiba de onde veio.
 | 78 | **Entregar pede confirmação**, mas em forma de pergunta de fato, não de "tem certeza": *"Você já entregou X para o Miguel?"* | O code verificou que entregar é irreversível — depois disso `cancelar_resgate` recusa. Dois botões irmãos, mesmo tamanho, num celular segurado com uma mão: o toque errado consome a recompensa da criança sem ela receber nada. "Tem certeza?" as pessoas fecham no automático; "você já entregou?" faz o adulto olhar para o mundo real antes de responder |
 | 79 | **Textos não presumem gênero da criança.** Repetir o nome em vez de "ele"/"ela" | Escolha do code, aprovada. `criancas` não guarda gênero de propósito — é dado que não precisamos e não vamos coletar. Vale a mesma lógica da decisão 73 |
 | 80 | Fica em aberto: a criança não fica sabendo quando o pedido é **entregue** | Hoje o item some de "Esperando" e nada avisa. Vira polimento depois da 2D, não incha a T-03 |
+
+## 06/09/2026 — Desenho da janela de schema (T-04)
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 81 | A coluna `tarefas.valor_cruzeiro` passa a se chamar **`valor_moeda`**, não `valor_realeta` | Não gravar a marca no schema. "Realeta" pode mudar de novo; "moeda" não. O nome comercial vive em `src/lib/moeda.js` e em lugar nenhum do banco |
+| 82 | **PIN da criança é trava de comportamento, não fronteira de segurança.** Isso fica escrito, não implícito | A criança não tem conta no `auth` (decisão 10), então o token da sessão é sempre o do responsável. O PIN impede a criança de navegar para a área de adulto; **não** impede quem sabe abrir o DevTools. Para 6–10 anos é proporcional. Fingir que é segurança seria mentir para nós mesmos e para o pai |
+| 83 | O PIN é **guardado com hash** (`pgcrypto`), definido e conferido por função de banco. Nunca trafega nem é comparado no front | Mesma lógica da moeda: o que o navegador controla, a criança controla |
+| 84 | **A T-04 entrega SÓ a migration.** Nenhuma tela | Ela é a única operação irreversível do lote. Uma revisão, uma aplicação. As telas que usam essas tabelas são reversíveis e vêm depois, em tasks próprias |
+| 85 | A migration entra com **estrutura ligada e comportamento desligado** onde a tela ainda não existe | Resolve o conflito entre "a janela de schema é agora" e "essa função ainda não pode rodar". Padrão já usado antes no projeto |
