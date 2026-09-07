@@ -158,3 +158,13 @@ real, se saiba de onde veio.
 | 70 | **Troca em dois tempos:** o texto visível muda agora (T-01b); o nome da **coluna** `valor_cruzeiro` só muda na janela de schema da T-04 | Texto é front, custo zero e reversível. Renomear coluna é irreversível e vai agrupada com PIN e as tabelas de regras. Trava T5 |
 | 71 | **A trava "não escreva cruzeiro em código novo" está encerrada** | Ela existia porque o nome era indefinido. Agora o nome existe: use `NOME_MOEDA`, sempre |
 | 72 | Fica aberto se o **nome do app** vira "Realeta" também | Não decidir agora. Entra na conversa de nome e identidade visual, prazo 22/09. O nome do app define domínio e bundle id, que não mudam depois de publicado — é decisão maior que a da moeda |
+
+## 06/09/2026 — Linguagem da interface e vitrine da criança
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 73 | **Nunca "papai", "mamãe" ou "seus pais" na interface.** O termo é "alguém da família", ou o nome do responsável quando o app souber qual | Levantado pelo code. Não é delicadeza, é requisito comercial: o produto é multi-família e vai ser usado por mãe sozinha, avó que cria o neto, padrasto, tutor. Um texto que pressupõe "papai" exclui parte do mercado e machuca uma criança de graça |
+| 74 | O texto antigo "Esperando o papai conferir" em `MinhasTarefas.jsx` **será corrigido**, mas em task própria | Não incha a T-02. Vira T-02b |
+| 75 | **Recompensa sem estoque some da vitrine da criança** em vez de aparecer bloqueada | Escolha do code, aprovada. Criança de 6 anos vendo algo que não pode pedir sem entender o motivo é frustração sem função |
+| 76 | Na seção "Quase lá", mostrar **só as três mais próximas** do saldo atual, com "Ver tudo" para o resto | Parede de itens bloqueados é desmotivador conhecido em produto infantil. Três alvos alcançáveis puxam; vinte inalcançáveis afundam |
+| 77 | **A senha de conta nunca é passada para o executor.** O teste de tela é do PO | Credencial não circula em prompt nem em chat. A fricção recorrente tem solução própria — seed de dados e login de desenvolvimento — que vira task quando doer o bastante |

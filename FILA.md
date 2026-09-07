@@ -156,6 +156,11 @@ desconta a carteira, grava a transação e baixa o estoque. Se o responsável
 cancelar, `cancelar_resgate` estorna. A criança precisa entender isso na tela —
 senão ela pede, vê o saldo cair, e acha que perdeu.
 
+## T-02b — Tirar "papai" dos textos da criança
+**Status:** aguarda T-02 · **Fase:** 2D
+`MinhasTarefas.jsx` diz "Esperando o papai conferir". Trocar por "alguém da
+família". Varrer o resto do app pelo mesmo padrão. Decisão 73.
+
 ## T-03 — Aprovação de resgate pelo responsável
 **Status:** aguarda T-02 · **Fase:** 2D
 Entregar e cancelar (com estorno). Já existe função no banco para os dois.
