@@ -168,3 +168,11 @@ real, se saiba de onde veio.
 | 75 | **Recompensa sem estoque some da vitrine da criança** em vez de aparecer bloqueada | Escolha do code, aprovada. Criança de 6 anos vendo algo que não pode pedir sem entender o motivo é frustração sem função |
 | 76 | Na seção "Quase lá", mostrar **só as três mais próximas** do saldo atual, com "Ver tudo" para o resto | Parede de itens bloqueados é desmotivador conhecido em produto infantil. Três alvos alcançáveis puxam; vinte inalcançáveis afundam |
 | 77 | **A senha de conta nunca é passada para o executor.** O teste de tela é do PO | Credencial não circula em prompt nem em chat. A fricção recorrente tem solução própria — seed de dados e login de desenvolvimento — que vira task quando doer o bastante |
+
+## 06/09/2026 — Entrega de resgate
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 78 | **Entregar pede confirmação**, mas em forma de pergunta de fato, não de "tem certeza": *"Você já entregou X para o Miguel?"* | O code verificou que entregar é irreversível — depois disso `cancelar_resgate` recusa. Dois botões irmãos, mesmo tamanho, num celular segurado com uma mão: o toque errado consome a recompensa da criança sem ela receber nada. "Tem certeza?" as pessoas fecham no automático; "você já entregou?" faz o adulto olhar para o mundo real antes de responder |
+| 79 | **Textos não presumem gênero da criança.** Repetir o nome em vez de "ele"/"ela" | Escolha do code, aprovada. `criancas` não guarda gênero de propósito — é dado que não precisamos e não vamos coletar. Vale a mesma lógica da decisão 73 |
+| 80 | Fica em aberto: a criança não fica sabendo quando o pedido é **entregue** | Hoje o item some de "Esperando" e nada avisa. Vira polimento depois da 2D, não incha a T-03 |
