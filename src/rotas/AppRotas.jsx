@@ -8,6 +8,7 @@ import Aprovacoes from '../telas/responsavel/Aprovacoes'
 import Recompensas from '../telas/responsavel/Recompensas'
 import DetalheCrianca from '../telas/responsavel/DetalheCrianca'
 import MinhasTarefas from '../telas/crianca/MinhasTarefas'
+import MinhaLoja from '../telas/crianca/MinhaLoja'
 import RotaProtegida from './RotaProtegida'
 
 export default function AppRotas() {
@@ -72,6 +73,14 @@ export default function AppRotas() {
           element={
             <RotaProtegida>
               <MinhasTarefas />
+            </RotaProtegida>
+          }
+        />
+        <Route
+          path="/crianca/:criancaId/loja"
+          element={
+            <RotaProtegida>
+              <MinhaLoja />
             </RotaProtegida>
           }
         />

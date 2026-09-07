@@ -91,6 +91,12 @@ export default function MinhasTarefas() {
           <p className="text-lg font-medium opacity-90">Oi, {crianca?.apelido || crianca?.nome}!</p>
           <p className="mt-1 text-5xl font-extrabold">{saldo ?? 0}</p>
           <p className="text-lg font-semibold opacity-90">{NOME_MOEDA}</p>
+          <button
+            onClick={() => navigate(`/crianca/${criancaId}/loja`)}
+            className="mt-4 min-h-14 w-full rounded-2xl bg-white text-xl font-bold text-purple-700 hover:bg-purple-50"
+          >
+            🎁 Ir para a loja
+          </button>
         </div>
 
         <Aviso tipo="erro">{erro || erroMarcar}</Aviso>
