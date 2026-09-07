@@ -1,4 +1,4 @@
-// Nome visível da moeda do app, em um lugar só. O nome vai mudar e a decisão
-// ainda não saiu — quando sair, troca-se aqui e as telas novas acompanham.
-// As telas antigas ainda escrevem o texto direto; migrá-las é task própria.
-export const NOME_MOEDA = 'Cruzeiros'
+// Nome visível da moeda do app, em um lugar só. Toda tela importa daqui;
+// nunca escreva o nome direto no JSX. A coluna tarefas.valor_cruzeiro é nome
+// de banco e fica como está até a janela de migração combinada.
+export const NOME_MOEDA = 'Realetas'

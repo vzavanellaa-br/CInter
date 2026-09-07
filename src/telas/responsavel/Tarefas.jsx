@@ -7,6 +7,7 @@ import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
 import FormularioTarefa from './FormularioTarefa'
 import { formatarHorario, infoPeriodo } from '../../lib/tempo'
+import { NOME_MOEDA } from '../../lib/moeda'
 
 const RECORRENCIA_ROTULO = { diaria: 'Diária', semanal: 'Semanal', avulsa: 'Avulsa' }
 const DIA_ABREV = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
@@ -104,7 +105,7 @@ export default function Tarefas() {
                       <div className="flex-1">
                         <p className="font-medium text-gray-900">{tarefa.titulo}</p>
                         <p className="text-sm text-gray-500">
-                          {tarefa.criancas?.apelido || tarefa.criancas?.nome} · {tarefa.valor_cruzeiro} Cruzeiros
+                          {tarefa.criancas?.apelido || tarefa.criancas?.nome} · {tarefa.valor_cruzeiro} {NOME_MOEDA}
                         </p>
                         <p className="text-xs text-gray-400">
                           {RECORRENCIA_ROTULO[tarefa.recorrencia]} · {resumoRecorrencia(tarefa)}

@@ -3,6 +3,7 @@ import Botao from '../../componentes/ui/Botao'
 import CampoTexto from '../../componentes/ui/CampoTexto'
 import Aviso from '../../componentes/ui/Aviso'
 import { horarioForaDoPeriodo, infoPeriodo } from '../../lib/tempo'
+import { NOME_MOEDA } from '../../lib/moeda'
 
 const ICONES = ['🦷', '🛏️', '📚', '🧹', '🍽️', '🐶', '👕', '🧸', '🚿', '🥗', '✏️', '⭐']
 
@@ -74,7 +75,7 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
 
     const valorNumero = Number(valor)
     if (!Number.isInteger(valorNumero) || valorNumero <= 0) {
-      setErro('Digite um valor em Cruzeiros inteiro e maior que zero.')
+      setErro(`Digite um valor em ${NOME_MOEDA} inteiro e maior que zero.`)
       return
     }
     if (recorrencia === 'semanal' && diasSemana.length === 0) {
@@ -177,7 +178,7 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
           <div>
             <CampoTexto
               id="valor-tarefa"
-              rotulo="Valor em Cruzeiros"
+              rotulo={`Valor em ${NOME_MOEDA}`}
               type="number"
               min="1"
               step="1"

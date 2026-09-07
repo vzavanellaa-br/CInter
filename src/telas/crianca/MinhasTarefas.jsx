@@ -6,6 +6,7 @@ import { useTarefasDoDia } from '../../hooks/useTarefasDoDia'
 import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
 import { ORDEM_PERIODOS, formatarHorario, infoPeriodo, periodoAtual } from '../../lib/tempo'
+import { NOME_MOEDA } from '../../lib/moeda'
 
 // Agrupa as tarefas de hoje em blocos Manhã/Tarde/Noite/A qualquer hora, NA
 // ORDEM CRONOLÓGICA (ORDEM_PERIODOS) — nunca por ordenação alfabética do
@@ -89,7 +90,7 @@ export default function MinhasTarefas() {
         <div className="mb-6 rounded-3xl bg-purple-600 p-6 text-center text-white shadow-md">
           <p className="text-lg font-medium opacity-90">Oi, {crianca?.apelido || crianca?.nome}!</p>
           <p className="mt-1 text-5xl font-extrabold">{saldo ?? 0}</p>
-          <p className="text-lg font-semibold opacity-90">Cruzeiros</p>
+          <p className="text-lg font-semibold opacity-90">{NOME_MOEDA}</p>
         </div>
 
         <Aviso tipo="erro">{erro || erroMarcar}</Aviso>
@@ -136,7 +137,7 @@ export default function MinhasTarefas() {
                         <div className="flex-1">
                           <p className="text-lg font-semibold text-gray-900">{tarefa.titulo}</p>
                           <p className="text-sm text-gray-500">
-                            {tarefa.valor_cruzeiro} Cruzeiros
+                            {tarefa.valor_cruzeiro} {NOME_MOEDA}
                             {tarefa.horario && ` · ${formatarHorario(tarefa.horario)}`}
                           </p>
                         </div>
@@ -161,7 +162,7 @@ export default function MinhasTarefas() {
 
                         {tarefa.status === 'aprovada' && (
                           <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-green-50 text-center text-lg font-medium text-green-700">
-                            🎉 Você ganhou {tarefa.valorCreditado} Cruzeiros!
+                            🎉 Você ganhou {tarefa.valorCreditado} {NOME_MOEDA}!
                           </div>
                         )}
 

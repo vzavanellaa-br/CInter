@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAprovacoes } from '../../hooks/useAprovacoes'
 import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
+import { NOME_MOEDA } from '../../lib/moeda'
 
 function formatarData(dataISO) {
   return new Date(`${dataISO}T00:00:00`).toLocaleDateString('pt-BR')
@@ -68,7 +69,7 @@ export default function Aprovacoes() {
                       {execucao.criancas?.apelido || execucao.criancas?.nome} · {formatarData(execucao.data_referencia)}
                     </p>
                     <p className="text-sm font-medium text-purple-600">
-                      {execucao.tarefas?.valor_cruzeiro} Cruzeiros
+                      {execucao.tarefas?.valor_cruzeiro} {NOME_MOEDA}
                     </p>
                   </div>
                 </div>

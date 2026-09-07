@@ -3,6 +3,7 @@ import { useCrianca } from '../../hooks/useCrianca'
 import { useCarteira } from '../../hooks/useCarteira'
 import { useTransacoes } from '../../hooks/useTransacoes'
 import Aviso from '../../componentes/ui/Aviso'
+import { NOME_MOEDA } from '../../lib/moeda'
 
 const ORIGEM_ROTULO = {
   tarefa: 'Tarefa aprovada',
@@ -57,7 +58,7 @@ export default function DetalheCrianca() {
 
         <div className="mb-6 rounded-2xl bg-purple-600 p-6 text-center text-white shadow-sm">
           <p className="text-sm font-medium opacity-90">Saldo atual</p>
-          <p className="text-4xl font-extrabold">{saldo ?? 0} Cruzeiros</p>
+          <p className="text-4xl font-extrabold">{saldo ?? 0} {NOME_MOEDA}</p>
         </div>
 
         <h2 className="mb-3 text-base font-semibold text-gray-800">Extrato</h2>
@@ -78,7 +79,7 @@ export default function DetalheCrianca() {
                 </div>
                 <p className={`text-sm font-semibold ${t.tipo === 'credito' ? 'text-green-600' : 'text-red-600'}`}>
                   {t.tipo === 'credito' ? '+' : '-'}
-                  {t.valor} Cruzeiros
+                  {t.valor} {NOME_MOEDA}
                 </p>
               </li>
             ))}

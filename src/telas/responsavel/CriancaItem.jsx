@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useCarteira } from '../../hooks/useCarteira'
 import Botao from '../../componentes/ui/Botao'
+import { NOME_MOEDA } from '../../lib/moeda'
 
 // Um item da lista de crianças no Início: avatar, nome, saldo, atalho para
 // o detalhe (extrato) e para entrar no modo criança.
@@ -19,7 +20,7 @@ export default function CriancaItem({ crianca }) {
         </span>
         <div className="flex-1">
           <p className="font-medium text-gray-900">{crianca.apelido || crianca.nome}</p>
-          <p className="text-sm text-gray-500">{carregando ? 'Carregando saldo…' : `${saldo ?? 0} Cruzeiros`}</p>
+          <p className="text-sm text-gray-500">{carregando ? 'Carregando saldo…' : `${saldo ?? 0} ${NOME_MOEDA}`}</p>
         </div>
       </button>
 
