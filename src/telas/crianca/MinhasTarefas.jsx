@@ -52,7 +52,7 @@ export default function MinhasTarefas() {
     setMarcandoId(null)
 
     if (error) {
-      setErroMarcar('Não deu para marcar essa tarefa agora. Peça ajuda para o responsável.')
+      setErroMarcar('Não deu para marcar essa tarefa agora. Peça ajuda para alguém da família.')
       return
     }
 
@@ -162,7 +162,7 @@ export default function MinhasTarefas() {
 
                         {tarefa.status === 'pendente' && (
                           <div className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-amber-50 text-center text-lg font-medium text-amber-700">
-                            ⏳ Esperando o papai conferir
+                            ⏳ Esperando alguém da família conferir
                           </div>
                         )}
 
