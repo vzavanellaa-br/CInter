@@ -186,3 +186,12 @@ real, se saiba de onde veio.
 | 83 | O PIN é **guardado com hash** (`pgcrypto`), definido e conferido por função de banco. Nunca trafega nem é comparado no front | Mesma lógica da moeda: o que o navegador controla, a criança controla |
 | 84 | **A T-04 entrega SÓ a migration.** Nenhuma tela | Ela é a única operação irreversível do lote. Uma revisão, uma aplicação. As telas que usam essas tabelas são reversíveis e vêm depois, em tasks próprias |
 | 85 | A migration entra com **estrutura ligada e comportamento desligado** onde a tela ainda não existe | Resolve o conflito entre "a janela de schema é agora" e "essa função ainda não pode rodar". Padrão já usado antes no projeto |
+
+## 07/09/2026 — Revisão da migration da T-04
+
+| # | Decisão | Motivo |
+|---|---|---|
+| 86 | Aprovados 8 dos 9 desvios do executor. O ponto 1 (tabela `descontos`) era **falha do meu prompt**, não iniciativa dele: sem ela as travas 4 e 7 são impossíveis | Registrado para eu não repetir. Ao escrever uma trava, escrever também onde ela guarda o estado |
+| 87 | **Teto mensal padrão baixa de 300 para 150** | Com ganho semanal típico de ~85 mais bônus, a criança faz algo entre 400 e 540 por mês. Teto de 300 apaga até 3/4 do mês — exatamente o que a trava 4 existe para impedir. 150 permite um desconto grande e um pequeno, ou três pequenos. Passou disso, o problema não é o saldo: é outra coisa, e o app não deve ser o instrumento |
+| 88 | **A chave `ativo` não é ligada para nenhuma família enquanto a tela do desconto não existir** | A trava 6 (alerta de desproporção) é de interface e não cabe no banco. Ligar antes da tela seria entregar a função sem uma das sete travas. Estrutura ligada, comportamento desligado |
+| 89 | Excelente a revogação de `select` em `criancas` com reconcessão coluna a coluna | É o que faz o `pin_hash` ser invisível de fato, não invisível por ninguém ter pedido |
