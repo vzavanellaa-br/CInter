@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { useFamilia } from '../../hooks/useFamilia'
 import { useAprovacoes } from '../../hooks/useAprovacoes'
+import { usePedidos } from '../../hooks/usePedidos'
 import Botao from '../../componentes/ui/Botao'
 import Aviso from '../../componentes/ui/Aviso'
 import CadastrarCrianca from './CadastrarCrianca'
@@ -12,6 +13,8 @@ export default function Inicio() {
   const { sessao, sair } = useAuth()
   const { familia, criancas, carregando, erro, recarregar } = useFamilia(sessao)
   const { execucoes: pendencias, carregando: carregandoPendencias } = useAprovacoes()
+  // Só o número de pedidos esperando; o histórico fica para a tela de Pedidos.
+  const { pendentes: pedidosEsperando, carregando: carregandoPedidos } = usePedidos({ comHistorico: false })
   const navigate = useNavigate()
   const [modalAberto, setModalAberto] = useState(false)
   const [erroSair, setErroSair] = useState('')
@@ -70,8 +73,12 @@ export default function Inicio() {
               </span>
             )}
           </Botao>
-          <Botao variante="secundario" className="col-span-2" onClick={() => navigate('/inicio/recompensas')}>
+          <Botao variante="secundario" onClick={() => navigate('/inicio/recompensas')}>
             Recompensas
+          </Botao>
+          <Botao variante="secundario" onClick={() => navigate('/inicio/pedidos')}>
+            Pedidos
+            {!carregandoPedidos && pedidosEsperando.length > 0 && ` · ${pedidosEsperando.length} esperando`}
           </Botao>
         </div>
 
