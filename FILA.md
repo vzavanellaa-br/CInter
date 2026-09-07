@@ -157,7 +157,7 @@ cancelar, `cancelar_resgate` estorna. A criança precisa entender isso na tela �
 senão ela pede, vê o saldo cair, e acha que perdeu.
 
 ## T-03b — Confirmação em Aprovar e Rejeitar (junto com a T-02b)
-**Status:** ATUAL · **Fase:** 2D (polimento)
+**Status:** FEITA em 07/09 — aguarda teste de tela pelo PO · **Fase:** 2D · **Commit:** `76e696b`
 Mesmo padrão da decisão 78, encontrado no vizinho. Ambos irreversíveis: o banco
 não tem estorno de aprovação, e rejeitada não volta a ser aprovada.
 
