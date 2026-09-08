@@ -16,7 +16,7 @@ export function useAprovacoes() {
     const { data, error } = await supabase
       .from('execucoes_tarefa')
       .select(
-        'id, data_referencia, marcada_em, tarefas(titulo, icone, valor_cruzeiro), criancas(nome, apelido)',
+        'id, data_referencia, marcada_em, tarefas(titulo, icone, valor_moeda), criancas(nome, apelido)',
       )
       .eq('status', 'pendente')
       .order('marcada_em', { ascending: false })

@@ -105,7 +105,7 @@ export default function Tarefas() {
                       <div className="flex-1">
                         <p className="font-medium text-gray-900">{tarefa.titulo}</p>
                         <p className="text-sm text-gray-500">
-                          {tarefa.criancas?.apelido || tarefa.criancas?.nome} · {tarefa.valor_cruzeiro} {NOME_MOEDA}
+                          {tarefa.criancas?.apelido || tarefa.criancas?.nome} · {tarefa.valor_moeda} {NOME_MOEDA}
                         </p>
                         <p className="text-xs text-gray-400">
                           {RECORRENCIA_ROTULO[tarefa.recorrencia]} · {resumoRecorrencia(tarefa)}

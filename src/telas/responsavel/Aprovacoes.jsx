@@ -26,7 +26,7 @@ function ConfirmarAprovacao({ execucao, processando, onFechar, onConfirmar }) {
         <h2 className="text-lg font-semibold text-gray-900">{nome} fez mesmo?</h2>
         <p className="mt-3 text-base text-gray-700">
           Confirme só depois de ver que &quot;{execucao.tarefas?.titulo}&quot; foi feita de verdade. {nome} recebe{' '}
-          {execucao.tarefas?.valor_cruzeiro} {NOME_MOEDA} agora, e isso não tem volta.
+          {execucao.tarefas?.valor_moeda} {NOME_MOEDA} agora, e isso não tem volta.
         </p>
         <div className="mt-6 flex gap-3">
           <Botao variante="secundario" onClick={onFechar} disabled={processando}>
@@ -50,7 +50,7 @@ function ConfirmarRejeicao({ execucao, processando, onFechar, onConfirmar }) {
       <div className="w-full max-w-sm rounded-t-2xl bg-white p-6 sm:rounded-2xl">
         <h2 className="text-lg font-semibold text-gray-900">Rejeitar &quot;{execucao.tarefas?.titulo}&quot;?</h2>
         <p className="mt-3 text-base text-gray-700">
-          {nome} não vai receber as {execucao.tarefas?.valor_cruzeiro} {NOME_MOEDA} por essa tarefa neste dia. Isso
+          {nome} não vai receber as {execucao.tarefas?.valor_moeda} {NOME_MOEDA} por essa tarefa neste dia. Isso
           não pode ser desfeito: depois de rejeitar, não dá mais para aprovar.
         </p>
         <div className="mt-6 flex gap-3">
@@ -132,7 +132,7 @@ export default function Aprovacoes() {
                       {nomeCrianca(execucao)} · {formatarData(execucao.data_referencia)}
                     </p>
                     <p className="text-sm font-medium text-purple-600">
-                      {execucao.tarefas?.valor_cruzeiro} {NOME_MOEDA}
+                      {execucao.tarefas?.valor_moeda} {NOME_MOEDA}
                     </p>
                   </div>
                 </div>

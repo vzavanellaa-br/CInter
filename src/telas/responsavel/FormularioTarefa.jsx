@@ -40,7 +40,7 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
   const [titulo, setTitulo] = useState(tarefaExistente?.titulo ?? '')
   const [icone, setIcone] = useState(tarefaExistente?.icone ?? ICONES[0])
   const [criancaId, setCriancaId] = useState(tarefaExistente?.crianca_id ?? criancas[0]?.id ?? '')
-  const [valor, setValor] = useState(tarefaExistente?.valor_cruzeiro ?? '')
+  const [valor, setValor] = useState(tarefaExistente?.valor_moeda ?? '')
   const [recorrencia, setRecorrencia] = useState(tarefaExistente?.recorrencia ?? 'diaria')
   const [diasSemana, setDiasSemana] = useState(tarefaExistente?.dias_semana ?? [])
   const [dataEspecifica, setDataEspecifica] = useState(tarefaExistente?.data_especifica ?? '')
@@ -99,7 +99,7 @@ export default function FormularioTarefa({ criancas, tarefaExistente, onFechar, 
       titulo: titulo.trim(),
       icone,
       crianca_id: criancaId,
-      valor_cruzeiro: valorNumero,
+      valor_moeda: valorNumero,
       recorrencia,
       dias_semana: recorrencia === 'semanal' ? diasSemana : null,
       data_especifica: recorrencia === 'avulsa' ? dataEspecifica : null,

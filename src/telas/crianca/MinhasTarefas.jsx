@@ -143,7 +143,7 @@ export default function MinhasTarefas() {
                         <div className="flex-1">
                           <p className="text-lg font-semibold text-gray-900">{tarefa.titulo}</p>
                           <p className="text-sm text-gray-500">
-                            {tarefa.valor_cruzeiro} {NOME_MOEDA}
+                            {tarefa.valor_moeda} {NOME_MOEDA}
                             {tarefa.horario && ` · ${formatarHorario(tarefa.horario)}`}
                           </p>
                         </div>

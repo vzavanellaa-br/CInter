@@ -17,11 +17,11 @@ function dataLocal(data) {
 // diária conta 7 vezes, semanal uma vez por dia marcado, avulsa só se a data
 // cair dentro desta semana.
 function valorSemanalDaTarefa(tarefa, inicioSemana, fimSemana) {
-  if (tarefa.recorrencia === 'diaria') return tarefa.valor_cruzeiro * 7
-  if (tarefa.recorrencia === 'semanal') return tarefa.valor_cruzeiro * (tarefa.dias_semana?.length ?? 0)
+  if (tarefa.recorrencia === 'diaria') return tarefa.valor_moeda * 7
+  if (tarefa.recorrencia === 'semanal') return tarefa.valor_moeda * (tarefa.dias_semana?.length ?? 0)
   if (tarefa.recorrencia === 'avulsa' && tarefa.data_especifica) {
     const dentroDaSemana = tarefa.data_especifica >= inicioSemana && tarefa.data_especifica <= fimSemana
-    return dentroDaSemana ? tarefa.valor_cruzeiro : 0
+    return dentroDaSemana ? tarefa.valor_moeda : 0
   }
   return 0
 }
@@ -87,7 +87,7 @@ export function useRecompensas() {
   const carregarGanhoSemanal = useCallback(async () => {
     const { data: tarefas, error: erroTarefas } = await supabase
       .from('tarefas')
-      .select('crianca_id, valor_cruzeiro, recorrencia, dias_semana, data_especifica, ativa')
+      .select('crianca_id, valor_moeda, recorrencia, dias_semana, data_especifica, ativa')
       .eq('ativa', true)
 
     if (erroTarefas) {
