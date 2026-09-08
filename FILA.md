@@ -172,7 +172,7 @@ Entregar e cancelar (com estorno). Já existe função no banco para os dois.
 
 
 ## T-04 — Janela de schema 1 (ampliada em 06/09)
-**Status:** bloqueada pela decisão de nome (ver `PLANO.md` §7) · **Fase:** 2E
+**Status:** FEITA e APLICADA em 08/09 · **Fase:** 2E · **Commit:** `bcc20a0`
 ⚠️ Irreversível: apresenta e PARA antes de rodar.
 
 Agora carrega **quatro** grupos, numa janela só, enquanto o banco só tem dado de teste:
